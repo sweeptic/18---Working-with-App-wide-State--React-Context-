@@ -21,24 +21,11 @@ function NewsletterRegistration() {
 
     fetch('api/newsletter', { method: 'POST', body: send, headers: { 'Content-Type': 'application/json' } })
       .then((res) => {
-        console.log('response', res);
-        //   console.log('error', error);
-
         if (res.ok) {
           return res.json();
         }
 
-        // if (!res.ok) {
-        //   console.log('FAILED');
-
-        //   throw new Error(data.message);
-        // }
-
-        // console.log('res', res);
-
         return res.json().then((data) => {
-          //   console.log('FAILED');
-
           throw new Error(data.message);
         });
       })
